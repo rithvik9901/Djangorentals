@@ -1,0 +1,105 @@
+{% load static %}
+<html>
+    <head>
+        <title>Welcome to Rental Car Store</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{% static 'css/welcomestyle.css' %}">
+        <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwPFCsdVk8hEuLHwTl2fwDxiepRcWoDn6c7g&usqp=CAU" type="image/icon type">
+    </head>
+    <body>
+        
+        <div class="header">
+            <h1 class="logo">Rental Car Store</h1>
+            <div class="navbar" style="margin-left: 1000px;width: 25%;">
+              <a href=""><i class="fa fa-fw fa-home"></i> Home</a>
+              <a href="#" id="myBtn"><i class="fa fa-fw fa-user"></i> Login</a>
+            </div>
+          </div>
+          <br>
+          <!-- The Modal -->
+          <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content" style="background-color: white;">
+              <span class="close">&times;</span>
+              
+                <h1 style="margin-top: -3px;"><i>Login as</i></h1>
+              <a href="{%url 'login' %}"><button class="but1" style="background-color: rgb(240, 240, 108);">User</button></a>
+              <a href="admin/"><button class="but1" style="background-color: rgb(231, 142, 231);">Admin</button></a>
+              <a href="{%url 'deslogin' %}"><button class="but1" style="background-color: rgb(241, 92, 92);">Designer</button></a>
+            </div>
+
+          </div>
+        <!-- Slideshow container -->
+<div class="slideshow-container">
+
+    <!-- Full-width images with number and caption text -->
+    <div class="mySlides fade">
+      <div class="numbertext"></div>
+      <img src="{% static 'images\welcomepagepic1.jpg' %}" style="width:100%">
+      <div class="text"><i></i></div>
+    </div>
+  
+    <div class="mySlides fade">
+      <div class="numbertext"></div>
+      <img src="{% static 'images\welcomepagepic2.jpg' %}" style="width:100%">
+      <div class="text"><i></i></div>
+    </div>
+  
+    <div class="mySlides fade">
+      <div class="numbertext"></div>
+      <img src="{% static 'images\welcomepagepic3.jpg' %}" style="width:100%">
+      <div class="text"><i></i></div>
+    </div>
+    
+    <center>
+      <h2 style="color: blue;"><i>" Style is something each of us already has, all we need to do is find it." <br><b>—Diane von Furstenberg</b></i></h2>
+    </center>
+    
+
+    
+
+
+  <script>
+      var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}
+  slides[slideIndex-1].style.display = "block";
+  setTimeout(showSlides, 4000); // Change image every 4 seconds
+}
+
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+  </script>
+    </body>
+</html>

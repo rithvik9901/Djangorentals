@@ -1,0 +1,193 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+{% load cart %}
+{% load custom_filter %}
+<html>
+    <head>
+        <style>
+            .top{
+                height: 300px;
+                width: 100%;
+                background-color: red;
+            }
+            .box{
+                width: 60%;
+                height: 600px;
+                margin-left: 280px;
+                background-color: white;
+                margin-top: -80px;
+                border-radius: 15px;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            }
+            input{
+                height: 40px;
+                width: 350px;
+                border: 0px;
+                text-align: center;
+                font-size: 18px;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            }
+            table{
+                margin-left: 40px;
+            }
+            td{
+                padding: 8px;
+            }
+            .sc{
+                height: 40px;
+                width: 300px;
+                margin-top: 35px;
+                margin-left: 250px;
+                background-color: rgb(22, 197, 22);
+                color: white;
+                border-radius: 5px;
+            }
+            .cp{
+                height: 40px;
+                width: 260px;
+                margin-top: 55px;
+                margin-left: 50px;
+                background-color: rgb(27, 27, 238);
+                color: white;
+                border-radius: 5px;
+                border: 0px;
+            }
+            .dp{
+                height: 40px;
+                width: 300px;
+                border: 0px;
+                margin-left: 150px;
+                margin-top: -3px;
+                background-color: rgb(236, 24, 24);
+                color: white;
+                border-radius: 5px;
+            }
+            .modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 30%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+        </style>
+    </head>
+    <body>
+        {% csrf_token %}
+        {% for i in form%}
+        
+        {% ifequal i.id key %}
+        <div class="top">
+            <br><br><br>
+            <h2 style="color: white; text-align: center;">Hello {{i.first_name}}</h2>
+            <h4 style="color: white;text-align: center;">This is you profile page.You can see your data like name,registered email,contact number <br>and you can update your profile data.</h4>
+        </div>
+        <div class="box">
+            <h4 style="padding-left: 30px;padding-top: 25px;">My account</h4>
+            <h4 style="padding-left: 30px;padding-top: 25px;color: grey;">User Information </h4><br>
+            <form action="" method="POST">
+                
+                <table>
+                    <tr>
+                        <td><h5>First Name</h5></td>
+                        <td><h5>Last Name</h5></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="fn" placeholder="{{i.first_name}}"></td>
+                        <td><input type="text" name="ln" placeholder="{{i.last_name}}"></td>
+                    </tr>
+                    <tr>
+                        <td><h5>Email</h5></td>
+                        <td><h5>Phone Number</h5></td>
+                    </tr>
+                    <tr>
+                        <td><input type="email" name="email" placeholder="{{i.email}}"></td>
+                        <td><input type="text" name="pass" placeholder="{{i.phone}}"></td>
+                    </tr>
+                </table>
+                <input type="submit" value="Save changes" class="sc">
+            </form>
+            
+            
+                <button type="submit" id="myBtn1" class="cp">Change Password</button>
+                <a href="{%url 'deleteacc' %}"><button type="submit" id="myBtn2" class="dp">Delete my account permanently</button></a>
+        </div>
+        {% endifequal %}
+        {% endfor %}
+        <br><br>
+        
+        <div id="myModal1" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+              
+              <h4>Change Password <span class="close">&times;</span></h4>
+              <form action="updpass" method="POST">
+                <input style="margin: 7px;" type="text" name="cp" placeholder="Current password" required><br>
+                <input style="margin: 7px;" type="text" name="newpass" placeholder="New Password" required><br>
+                <input style="margin: 7px;" type="text" name="con" placeholder="Confirm Password" required><br><br>
+                <input style="margin: 7px; background-color: blue;color: white;width: 50%;margin-left: 90px;"type="submit" value="Change Password">
+              </form>
+            </div>
+          </div>
+          
+        <script>
+            var modal = document.getElementById("myModal1");
+
+            // Get the button that opens the modal
+            var btn = document.getElementById("myBtn1");
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks on the button, open the modal
+            btn.onclick = function() {
+            modal.style.display = "block";
+            }
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+            modal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+            }
+        </script>
+    </body>
+</html>
+
+{% endblock %}
