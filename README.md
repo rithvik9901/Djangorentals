@@ -27,12 +27,11 @@ In this website I had created a website regarding  Rental Systems which helps th
  
  It will create a super user.
  
- Go to admin module that is 
+
  
  
  
- 
- Here is the glance of my website :-
+#  Here is the glance of my website :-
  
 ![image](https://user-images.githubusercontent.com/89625566/173171427-dbd41442-8b5e-4956-b9ce-f5a6ee06af69.png)
 ![image](https://user-images.githubusercontent.com/89625566/173171435-be708d0e-f4d2-4fd7-8c84-2ccdaadd75a1.png)
