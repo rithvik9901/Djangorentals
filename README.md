@@ -5,7 +5,7 @@ This is a Simple Django project based on the Rental Systems.
 
 
 In this website I had created a website regarding  Rental Systems which helps the user to rent a vehicle. I have deployed my project in the azure portal,which is given below
-# azure link https://wagenrentals.azurewebsites.net
+# Azure link https://wagenrentals.azurewebsites.net
 
 ## Steps to Run this project.
 - After downloading and unzipping the project folder
@@ -30,7 +30,7 @@ In this website I had created a website regarding  Rental Systems which helps th
  Go to admin module that is 
  
  
- **<a href="http://127.0.0.1:8000/admin/login/?next=/admin/">The Admin wants to add the products here</a>**
+ 
  
  Here is the glance of my website :-
  
